@@ -20,12 +20,12 @@ const action = (type, payload) => ({
 const actions = {
   fetchStoryIds: (payload = {}) => {
     return dispatch => {
-      dispatch(action(actionTypes.FETCH_STORIES_REQUEST, payload));
+      dispatch(action(actionTypes.FETCH_STORY_IDS_REQUEST, payload));
       return hackerNewsApi
         .getTopStoryIds()
         .then(storyIds => {
           dispatch(action(actionTypes.FETCH_STORY_IDS_SUCCESS, { storyIds }));
-          dispatch(actions.fetchStories({ storyIds, page: 0 }));
+          dispatch(actions.fetchStories({ storyIds, page: 1 }));
           return storyIds;
         })
         .catch(err =>
